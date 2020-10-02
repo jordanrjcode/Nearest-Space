@@ -63,19 +63,16 @@ export const getUserAuthencticate = () => async (dispatch) => {
     type: LOADING,
   });
   const token = localStorage.getItem("token");
-  console.log(token);
   if (token) {
     tokenAuth(token);
   }
   try {
     const respuesta = await clienteAxios.get("/api/auth/user");
-    console.log(respuesta.data);
     dispatch({
       type: GET_USER_AUTHENTICATE,
       payload: respuesta.data,
     });
   } catch (error) {
-    console.log(error.response);
     dispatch({
       type: GET_USER_AUTHENTICATE_ERROR,
     });

@@ -1,8 +1,9 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 const MessagesSchema = new Schema({
   message: { type: String, required: true },
-  name: { type: String },
-  timeStamp: { type: String },
+  id_chatList: { type: Types.ObjectId, ref: "Chatlist" },
+  sender: { type: Types.ObjectId, ref: "Users" },
+  receiver: { type: Types.ObjectId, ref: "Users" },
 });
 
 module.exports = model("messagecontent", MessagesSchema);

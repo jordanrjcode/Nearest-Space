@@ -8,7 +8,7 @@ module.exports = (res, id) => {
     payload,
     process.env.JWT_KEY,
     {
-      expiresIn: 3600,
+      expiresIn: 1800,
     },
     (error, token) => {
       if (error) return res.status(500).json({ msg: "There was a mistake" });

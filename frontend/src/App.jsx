@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
-import Home from "./components/Home";
+import Messages from "./components/Messages";
 import Background from "./components/Background";
 import tokenAuth from "./config/token";
 import Spinner from "./components/Spinner";
@@ -31,7 +31,7 @@ const App = () => {
       <Switch>
         <Route path="/login" component={Login} exact />
         <Route path="/signup" component={Signup} exact />
-        <RutaPrivada path="/home" component={Home} exact />
+        <RutaPrivada path="/messages" component={Messages} exact />
         {/* <Route path="/" component={Landing} exact /> */}
       </Switch>
     </Router>

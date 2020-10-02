@@ -1,51 +1,68 @@
 header {
   background: transparent;
   width: 100vw;
-  height: 10vh;
+  height: 8%;
   box-sizing: border-box;
   border-bottom: 1px solid white;
   position: fixed;
+  transition: all 1s ease;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.si-hover:hover {
+  background-color: rgba(11, 61, 145, 0.5);
+  height: 100vh;
+}
+
+.si-hover:hover .navbar__container,
+.si-hover:hover .brand__container {
+  height: 50px;
 }
 
 .brand__container {
-  background-color: blue;
-}
-
-.navbar__container {
-  background-color: red;
+  /* background-color: red; */
+  display: inline-block;
+  height: 100%;
+  transition: height 1s ease-in-out;
   display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
   align-items: center;
+}
+.navbar__container {
+  height: 100%;
   box-sizing: border-box;
+  transition: height 1s ease-in-out;
 }
 .navbar__list {
+  /* background-color: red; */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  height: 100%;
+  align-items: center;
 }
 
 .brand__title {
-  font-size: 1.8rem;
+  display: inline-block;
+  padding: 13px 24px;
+  font-size: 1.3rem;
 }
 
 .list__item {
+  display: flex;
+  align-items: center;
   font-size: 1.3rem;
-  padding: 15px 0;
   transition: background 0.3s linear;
   cursor: pointer;
+  height: 100%;
 }
 
 .list__item .span {
   box-sizing: border-box;
   display: block;
-  padding: 0 17px 0 17px;
+  padding: 0 17px;
   border-right: 1px solid white;
 }
-/* .span:last-of-type {
-  border: none;
-} */
 
 .list__item:last-child .span {
   border: none;
@@ -62,4 +79,9 @@ header {
 .list__item {
   color: white;
   text-decoration: none;
+}
+
+.logo {
+  align-self: center;
+  margin: 0 24px;
 }

@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const User = require("../models/Usuarios");
+const User = require("../models/Users");
 const validationFields = require("../helpers/validator");
 const setToken = require("../helpers/setToken");
 

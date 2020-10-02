@@ -15,7 +15,7 @@ const Signup = (props) => {
     password: "",
   });
   useEffect(() => {
-    if (user && authenticate) props.history.push("/home");
+    if (user && authenticate) props.history.push("/");
     if (message) {
       dispatch(showAlertAction(message));
     }
