@@ -1,0 +1,199 @@
+.messages__container {
+  box-sizing: border-box;
+  border: 0.2px solid var(--bg-color-primary);
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 90vh;
+  display: flex;
+}
+
+.sidebar {
+  height: 100%;
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.perfil {
+  width: 100%;
+  flex-basis: 15%;
+  background-color: var(--bg-color-primary-transparent);
+  position: relative;
+}
+
+.personal__container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 10%;
+  left: 5%;
+}
+.foto__perfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+}
+
+.info__personal {
+  color: white;
+  margin-left: 8px;
+}
+
+.estado__container {
+  display: flex;
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  align-items: center;
+}
+
+.estado__circulo {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.estado {
+  left: 25%;
+  bottom: 10%;
+  color: green;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.estado__container input {
+  border: 3px solid var(--bg-color-primary);
+  background-color: rgba(10, 45, 105, 0.2);
+  display: none;
+}
+
+.config {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+}
+
+.notify {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+}
+
+.busqueda {
+  width: 100%;
+  flex-basis: 5%;
+  background-color: var(--bg-color-primary-transparent);
+  position: relative;
+}
+
+.busqueda:before {
+  content: "";
+  width: 95%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-top: 1px solid var(--bg-color-primary);
+  transform: translateX(-50%);
+}
+
+.busqueda:after {
+  content: "";
+  width: 95%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border-bottom: 1px solid var(--bg-color-primary);
+  transform: translateX(-50%);
+}
+
+.busqueda img {
+  position: absolute;
+  cursor: pointer;
+}
+
+.search {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+.add__user {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
+
+.search__input {
+  box-sizing: border-box;
+  width: 80%;
+  height: 100%;
+  background-color: var(--bg-color-primary-transparent);
+  border: none;
+  color: white;
+  outline: none;
+  padding: 0 5px 0 5px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.search__exit {
+  position: absolute;
+  right: 2.5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.main {
+  display: flex;
+  flex-basis: 70%;
+  height: 100%;
+  flex-direction: column;
+}
+.message__header {
+  background-color: var(--bg-color-primary-transparent);
+  width: 100%;
+  height: 10%;
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.message__header:after {
+  content: "";
+  position: absolute;
+  height: 80%;
+  top: 50%;
+  left: 0;
+  border-left: solid 1px var(--bg-color-primary);
+  transform: translateY(-50%);
+}
+
+.chat__room {
+  height: 90%;
+  flex-direction: column;
+}
+.room__message {
+  height: 100%;
+}
+.info__alert {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 10%);
+}
+.info__alert p {
+  color: white;
+  font-size: 1.6rem;
+}

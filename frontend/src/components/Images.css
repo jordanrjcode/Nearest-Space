@@ -1,0 +1,10 @@
+.images-container {
+  width: 176px;
+  height: 176px;
+  border: 30px;
+  box-shadow: 0px 24px 27px -10px rgba(0, 0, 0, 0.75);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}

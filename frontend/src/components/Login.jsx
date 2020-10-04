@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { useSelector, useDispatch } from "react-redux";
-import { iniciarSesionAction, getUserAuthencticate } from "../Redux/authDuck";
+import { iniciarSesionAction } from "../Redux/authDuck";
 import { showAlertAction } from "../Redux/alertDuck";
 import Alerta from "./Alerta";
 const Login = (props) => {
-  //dispatch
   const dispatch = useDispatch();
   const user = useSelector((store) => store.auth.user);
   const authenticate = useSelector((store) => store.auth.authenticate);
@@ -19,7 +18,7 @@ const Login = (props) => {
     if (message) {
       dispatch(showAlertAction(message));
     }
-  }, [authenticate, message, props.history]);
+  }, [authenticate, user, dispatch, message, props.history]);
   const { username, password } = data;
 
   const saveData = (e) => {
@@ -58,7 +57,7 @@ const Login = (props) => {
         className="login"
       >
         <Alerta />
-        <h2 className="login__title">SpaceMars.JAR</h2>
+        <img className="login__title" src="/images/logo.svg" alt="logo" />
         <input
           type="text"
           className="login__input"

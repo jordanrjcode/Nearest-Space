@@ -16,6 +16,19 @@ router.post(
   ],
   authController.register
 );
+router.post(
+  "/edit",
+  auth,
+  [check("state", "State is required").not().isEmpty()],
+  authController.editUser
+);
+
+router.post(
+  "/agg",
+  auth,
+  [check("invited", "Invited is required").not().isEmpty()],
+  authController.aggContact
+);
 
 router.post(
   "/login",

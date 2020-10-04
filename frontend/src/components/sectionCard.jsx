@@ -1,5 +1,5 @@
 import React from "react";
-
+import './sectionCard.css'
 class SectionCard extends React.Component {
   constructor(props) {
     super(props);
@@ -18,3 +18,5 @@ class SectionCard extends React.Component {
     );
   }
 }
+
+export default SectionCard;

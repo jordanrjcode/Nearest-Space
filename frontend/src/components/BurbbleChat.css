@@ -1,0 +1,23 @@
+.chat {
+  border: 2px solid var(--bg-color-primary);
+  background: var(--bg-color-primary-transparent);
+  color: white;
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  cursor: pointer;
+  margin: 4px 0;
+}
+.chat img {
+  border-radius: 50%;
+  max-width: 50px;
+  margin-right: 10px;
+}
+.info .user {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.state {
+  color: green;
+}

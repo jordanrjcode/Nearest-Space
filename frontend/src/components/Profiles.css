@@ -1,0 +1,22 @@
+.profile {
+  border: 2px solid var(--bg-color-primary);
+  background: var(--bg-color-transparent);
+  color: white;
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.profile img {
+  border-radius: 50%;
+  max-width: 50px;
+}
+.username {
+  font-weight: bold;
+}
+
+.state {
+  color: green;
+}

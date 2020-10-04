@@ -19,7 +19,7 @@ const Signup = (props) => {
     if (message) {
       dispatch(showAlertAction(message));
     }
-  }, [user, authenticate, message, props.history]);
+  }, [user, authenticate, message, props.history, dispatch]);
   const { username, email, password } = data;
 
   const sendAlert = (data) => {
@@ -54,7 +54,7 @@ const Signup = (props) => {
         }}
       >
         <Alert />
-        <h2 className="signup__title">SpaceMars.JAR</h2>
+        <img className="signup__title" src="/images/logo.svg" alt="logo" />
         <input
           name="username"
           type="text"

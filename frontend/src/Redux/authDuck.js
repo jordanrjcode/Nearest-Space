@@ -18,6 +18,8 @@ const GET_USER_AUTHENTICATE_ERROR = "GET_USER_AUTHENTICATE_ERROR";
 const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 const LOADING = "LOADING";
 const LOGOUT = "LOGOUT";
+const EDIT_USER = "EDIT_USER";
+const EDIT_USER_ERROR = "EDIT_USER_ERROR";
 
 //Reducer
 export default function reducer(state = stateInicial, action) {
@@ -79,7 +81,7 @@ export const getUserAuthencticate = () => async (dispatch) => {
   }
 };
 
-export const iniciarSesionAction = (data) => async (dispatch, getState) => {
+export const iniciarSesionAction = (data) => async (dispatch) => {
   try {
     const respuesta = await clienteAxios.post("/api/auth/login", data);
     console.log(respuesta.data);
@@ -139,3 +141,15 @@ export const logOutAction = () => (dispatch) => {
     type: LOGOUT,
   });
 };
+
+export const editUser = (data) => async (dispatch) => {
+  try {
+    console.log(data);
+    const res = await clienteAxios.post(`/api/auth/edit`, data);
+    console.log(res.data);
+  } catch (error) {
+    console.log(error.response);
+  }
+};
+
+export const newChat

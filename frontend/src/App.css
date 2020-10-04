@@ -1,5 +1,8 @@
 :root {
-  --bg-color-primary: #0b3d91;
+  --bg-color-primary: #0b5174;
+  --bg-color-primary-transparent: rgba(11, 81, 116, 0.2);
+  --bg-color-secondary: #df5323;
+  --bg-color-secondary-transparent: rgba(223, 83, 35, 0.2);
 }
 
 .App {

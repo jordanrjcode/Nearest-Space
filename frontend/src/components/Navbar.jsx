@@ -1,24 +1,31 @@
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import { logOutAction } from "../Redux/authDuck";
-import Card from "./Card";
 
 const Navbar = () => {
+  const [currentlocation, setCurrentLocation] = useState();
   const [showCards, setShowCards] = useState(false);
   const [classh, setClassH] = useState("header");
+  let location = useLocation();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.auth.user);
+  useEffect(() => {
+    setCurrentLocation(location.pathname);
+  }, [location]);
+  if (currentlocation === "/messages") return null;
   const noHover = (e) => {
-    if (e.target.classList.contains("no-hover")) {
-      if (document.getElementById("header").classList.contains("si-hover")) {
-        setClassH("header");
-        setShowCards(false);
-      }
-    } else {
-      if (!document.getElementById("header").classList.contains("si-hover")) {
-        setClassH("header si-hover");
+    if (currentlocation === "/") {
+      if (e.target.classList.contains("no-hover")) {
+        if (document.getElementById("header").classList.contains("si-hover")) {
+          setClassH("header");
+          setShowCards(false);
+        }
+      } else {
+        if (!document.getElementById("header").classList.contains("si-hover")) {
+          setClassH("header si-hover");
+        }
       }
     }
   };
@@ -27,11 +34,15 @@ const Navbar = () => {
       className={classh}
       id="header"
       onMouseEnter={(e) => {
-        setShowCards(true);
-        noHover(e);
+        if (currentlocation === "/") {
+          setShowCards(true);
+          noHover(e);
+        }
       }}
       onMouseLeave={() => {
-        setShowCards(false);
+        if (currentlocation === "/") {
+          setShowCards(false);
+        }
       }}
     >
       <div
@@ -42,7 +53,8 @@ const Navbar = () => {
         }}
       >
         <Link to="/" className="brand__title no-hover">
-          SpaceMars.Jar
+          <img src="/images/logoPLanetas.svg" alt="logoPlanetas" />
+          <img src="/images/logoNombre.svg" alt="logoNombre" />
         </Link>
       </div>
       <nav
@@ -55,7 +67,7 @@ const Navbar = () => {
           {user ? (
             <>
               <NavLink className="list__item no-hover" to="/messages">
-                <span className="span no-hover">Messages</span>
+                <span className="span no-hover">App</span>
               </NavLink>
               <p
                 onClick={() => {

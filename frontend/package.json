@@ -13,6 +13,7 @@
     "react-redux": "^7.2.1",
     "react-responsive-animate-navbar": "^1.1.8",
     "react-scripts": "3.4.3",
+    "react-tsparticles": "^1.17.12",
     "redux": "^4.0.5",
     "redux-devtools": "^3.7.0",
     "redux-thunk": "^2.3.0",
