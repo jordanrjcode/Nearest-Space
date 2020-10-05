@@ -1,6 +1,6 @@
 # THE NEAREST SPACE
 
-![Screenshot of proyect](https://repository-images.githubusercontent.com/300455343/60429b80-068f-11eb-962d-93fcb1d08da1)
+![Screenshot of proyect](https://repository-images.githubusercontent.com/301288647/815cb980-069a-11eb-8a22-981995c55776)
 
 ### Provide a high-level summary of your Project.
 
