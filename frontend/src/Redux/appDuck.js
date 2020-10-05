@@ -22,7 +22,6 @@ export default function appReducer(state = initialState, action) {
 
 //Actions
 export const searchListUser = (data) => async (dispatch) => {
-  console.log(data);
   try {
     const response = await clienteAxios.post("/api/app/users", data);
     dispatch({
@@ -33,14 +32,5 @@ export const searchListUser = (data) => async (dispatch) => {
     dispatch({
       type: SEARCH_USERS_ERROR,
     });
-  }
-};
-
-export const createRoomChat = ({ received }) => async (dispatch) => {
-  try {
-    const response = await clienteAxios.post("/api/app/newchat", { received });
-    console.log(response.data);
-  } catch (error) {
-    console.log(error.response);
   }
 };

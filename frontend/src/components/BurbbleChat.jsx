@@ -1,9 +1,9 @@
 import React from "react";
 import "./BurbbleChat.css";
-const BurbbleChat = ({ setMessageActive, username, state, image }) => {
+const BurbbleChat = ({ setMessageActive, username, image }) => {
   return (
     <div
-      class="chat"
+      className="chat"
       onClick={() => {
         setMessageActive(true);
       }}
@@ -11,7 +11,6 @@ const BurbbleChat = ({ setMessageActive, username, state, image }) => {
       <img src={image} alt="user__logo" />
       <div className="info">
         <p className="user">{username}</p>
-        <p className="state">{state}</p>
       </div>
     </div>
   );

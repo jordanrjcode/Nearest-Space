@@ -3,10 +3,18 @@ import "./AddUser.css";
 import Profiles from "../Profiles";
 import Settings from "../Settings";
 import { useDispatch, useSelector } from "react-redux";
-import { searchListUser, createRoomChat } from "../../Redux/appDuck";
-function AddUser({ setModeAgg, modeSetting, setModeSetting }) {
+import { searchListUser } from "../../Redux/appDuck";
+function AddUser({
+  setModeAgg,
+  modeSetting,
+  setModeSetting,
+  socket,
+  setChatLists,
+  chatLists,
+}) {
   const dispatch = useDispatch();
   const searchUsers = useSelector((store) => store.app.searchUsers);
+  const user = useSelector((store) => store.auth.user);
   const [listU, setListU] = useState([]);
   useEffect(() => {
     if (searchUsers !== null) setListU(searchUsers);
@@ -48,7 +56,26 @@ function AddUser({ setModeAgg, modeSetting, setModeSetting }) {
                     <div
                       key={users._id}
                       onClick={() => {
-                        dispatch(createRoomChat({ received: users._id }));
+                        socket.emit("newroom", {
+                          senderComplete: user,
+                          receiverComplete: users,
+                          userS: [user._id, users._id],
+                          user1: user.username,
+                          user2: users.username,
+                          receiver: users.username,
+                        });
+                        setChatLists([
+                          ...chatLists,
+                          {
+                            senderComplete: user,
+                            receiverComplete: users,
+                            userS: [user._id, users._id],
+                            user1: user.username,
+                            user2: users.username,
+                            receiver: users.username,
+                            image: users.image,
+                          },
+                        ]);
                         setModeAgg(false);
                       }}
                     >

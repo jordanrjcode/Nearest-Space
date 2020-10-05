@@ -1,0 +1,44 @@
+.info-border {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  border-left: 1px solid var(--bg-color-primary);
+  border-right: 1px solid var(--bg-color-primary);
+  background-color: var(--bg-color-primary-transparent);
+}
+
+.info-border::before,
+.info-border::after {
+  content: "";
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--bg-color-primary);
+}
+
+.info-border::before {
+  top: 0;
+  height: 10px;
+  background-color: var(--bg-color-primary);
+}
+
+.info-border::after {
+  bottom: 0;
+}
+
+.data-container {
+  margin-top: 10%;
+}
+
+.data-container span {
+  color: var(--bg-color-secondary);
+}
+
+.data {
+  color: white;
+  margin: 5% 0 0 5%;
+}

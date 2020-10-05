@@ -55,3 +55,9 @@
 .signup__span {
   font-weight: bolder;
 }
+
+@media screen and (max-width: 600px) {
+  .signup {
+    width: 80%;
+  }
+}

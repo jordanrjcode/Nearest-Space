@@ -25,11 +25,15 @@ const Messages = () => {
   useEffect(() => {
     socket.on("loadChats", (chats, messages) => {
       setChatLists(chats);
-      console.log(messages);
       setAllmessages(messages);
     });
   }, [partner]);
   useEffect(() => {
+    socket.on("loadroom", (chatroom) => {
+      console.log(chatroom);
+      setChatLists([...chatLists, chatroom]);
+    });
+
     socket.on("whisper", (data) => {
       console.log(data);
       setAllmessages([...allMessages, data]);
@@ -37,7 +41,7 @@ const Messages = () => {
     return () => {
       socket.off();
     };
-  }, [allMessages]);
+  }, [allMessages, chatLists]);
 
   const click = (chat) => {
     if (chat.user1 === user.username) setPartner(chat.user2);
@@ -53,6 +57,7 @@ const Messages = () => {
       sender: user.username,
     });
   };
+
   return (
     <Fragment>
       <div className="messages__container">
@@ -130,32 +135,28 @@ const Messages = () => {
           </div>
           {chatSearch !== "" ? (
             <div className="search__results">
-              <Profiles username={"skaosk"} />
+              <Profiles username={"Prueba filtro"} />
             </div>
           ) : (
             <div className="chats">
               {chatLists.length < 1
                 ? null
-                : chatLists.map((chat) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          click(chat);
-                        }}
-                      >
-                        <BurbbleChat
-                          state={user.state}
-                          username={
-                            chat.user1 === user.username
-                              ? chat.user2
-                              : chat.user1
-                          }
-                          image={user.image}
-                          setMessageActive={setMessageActive}
-                        />
-                      </div>
-                    );
-                  })}
+                : chatLists.map((chat, index) => (
+                    <div
+                      key={index}
+                      onClick={() => {
+                        click(chat);
+                      }}
+                    >
+                      <BurbbleChat
+                        username={
+                          chat.user1 === user.username ? chat.user2 : chat.user1
+                        }
+                        image={user.image}
+                        setMessageActive={setMessageActive}
+                      />
+                    </div>
+                  ))}
             </div>
           )}
         </div>
@@ -189,6 +190,9 @@ const Messages = () => {
           setModeSetting={setModeSetting}
           modeSetting={modeSetting}
           setModeAgg={setModeAgg}
+          socket={socket}
+          chatLists={chatLists}
+          setChatLists={setChatLists}
         />
       ) : null}
     </Fragment>

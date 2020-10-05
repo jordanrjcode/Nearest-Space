@@ -24,13 +24,6 @@ router.post(
 );
 
 router.post(
-  "/agg",
-  auth,
-  [check("invited", "Invited is required").not().isEmpty()],
-  authController.aggContact
-);
-
-router.post(
   "/login",
   [
     check("username", "Username is required").not().isEmpty(),

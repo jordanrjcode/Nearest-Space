@@ -8,6 +8,9 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const Message = require("./models/Messages");
+const Users = require("./models/Users");
+const ChatList = require("./models/ChatList");
+
 conectarDB();
 app.use(cors());
 
@@ -16,7 +19,7 @@ io.on("connection", (socket) => {
   socket.on("connected", async (id, username) => {
     usersConnected[username] = socket.id;
     const chats = await loadChat.loadChats(id);
-    const messages = await loadChat.loadMessages(chats.chatsDB, username);
+    const messages = await loadChat.loadMessages(username);
     socket.emit("loadChats", chats.chatsDB, messages);
   });
   socket.on("message", async function (data) {
@@ -28,6 +31,34 @@ io.on("connection", (socket) => {
       sender: data.sender,
       receiver: data.receiver,
     });
+  });
+  socket.on("newroom", async (data) => {
+    let roomListExist = await ChatList.find({
+      users: data.users,
+    });
+    if (roomListExist.length > 0) return;
+    const newChat = new ChatList({
+      users: data.userS,
+      user1: data.user1,
+      user2: data.user2,
+    });
+    if (data.senderComplete.contacts.length > 0) {
+      data.senderComplete.contacts.map((contactsMap) => {
+        if (contactsMap !== data.user2._id) return;
+      });
+    }
+    await Users.updateOne(data.receiverComplete, {
+      $push: {
+        contacts: data.senderComplete._id,
+      },
+    });
+    await Users.updateOne(data.senderComplete, {
+      $push: {
+        contacts: data.receiverComplete._id,
+      },
+    });
+    await newChat.save();
+    io.to(usersConnected[data.user2]).emit("loadroom", newChat);
   });
 });
 

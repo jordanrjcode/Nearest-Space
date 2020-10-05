@@ -6,7 +6,6 @@ import { logOutAction } from "../Redux/authDuck";
 
 const Navbar = () => {
   const [currentlocation, setCurrentLocation] = useState();
-  const [showCards, setShowCards] = useState(false);
   const [classh, setClassH] = useState("header");
   let location = useLocation();
   const dispatch = useDispatch();
@@ -20,7 +19,6 @@ const Navbar = () => {
       if (e.target.classList.contains("no-hover")) {
         if (document.getElementById("header").classList.contains("si-hover")) {
           setClassH("header");
-          setShowCards(false);
         }
       } else {
         if (!document.getElementById("header").classList.contains("si-hover")) {
@@ -35,13 +33,7 @@ const Navbar = () => {
       id="header"
       onMouseEnter={(e) => {
         if (currentlocation === "/") {
-          setShowCards(true);
           noHover(e);
-        }
-      }}
-      onMouseLeave={() => {
-        if (currentlocation === "/") {
-          setShowCards(false);
         }
       }}
     >
@@ -53,10 +45,14 @@ const Navbar = () => {
         }}
       >
         <Link to="/" className="brand__title no-hover">
-          <img src="/images/logoPLanetas.svg" alt="logoPlanetas" />
           <img src="/images/logoNombre.svg" alt="logoNombre" />
         </Link>
       </div>
+      <nav className="navbar__cell">
+        <div></div>
+        <div></div>
+        <div></div>
+      </nav>
       <nav
         className="navbar__container no-hover"
         onMouseEnter={(e) => {
@@ -103,37 +99,20 @@ const Navbar = () => {
               </NavLink>
             </>
           )}
-          <Link className="logo no-hover" to="https://github.com/">
+          <a
+            className="logo no-hover"
+            href="https://github.com/jordanrjcode/Nearest-Space"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src="/images/github.svg"
               className="no-hover"
               alt="GitHub Icon"
             />
-          </Link>
+          </a>
         </div>
       </nav>
-      {/* {showCards ? (
-        <>
-          <Card
-            image_url={
-              "https://mars.nasa.gov/system/resources/detail_files/3644_PIA14832-full2.jpg"
-            }
-            title="hola"
-          />
-          <Card
-            image_url={
-              "https://mars.nasa.gov/system/resources/detail_files/6617_Mars-MSL-Curiosity-Comet-Siding-Spring-meteor-showers-full2.jpg"
-            }
-            title="hola"
-          />
-          <Card
-            image_url={
-              "https://mars.nasa.gov/system/resources/detail_files/3652_PIA14841-full2.jpg"
-            }
-            title="hola"
-          />
-        </>
-      ) : null} */}
     </header>
   );
 };

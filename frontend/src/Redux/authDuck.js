@@ -41,6 +41,10 @@ export default function reducer(state = stateInicial, action) {
       };
     case LOADING:
       return { ...state, loading: true };
+    case EDIT_USER:
+      return { ...state, user: action.payload };
+    case EDIT_USER_ERROR:
+      return { ...state };
     case GET_USER_AUTHENTICATE:
       return {
         ...state,
@@ -75,6 +79,7 @@ export const getUserAuthencticate = () => async (dispatch) => {
       payload: respuesta.data,
     });
   } catch (error) {
+    console.log(error.response);
     dispatch({
       type: GET_USER_AUTHENTICATE_ERROR,
     });
@@ -84,19 +89,16 @@ export const getUserAuthencticate = () => async (dispatch) => {
 export const iniciarSesionAction = (data) => async (dispatch) => {
   try {
     const respuesta = await clienteAxios.post("/api/auth/login", data);
-    console.log(respuesta.data);
     dispatch({
       type: INICIO_SESION_EXITO,
       payload: respuesta.data,
     });
     getUserAuthencticate()(dispatch);
   } catch (error) {
-    console.log(error.response);
     let alerta = {
       message: error.response.data.msg,
       category: "Error",
     };
-    console.log(alerta);
     dispatch({
       type: INICIO_SESION_ERROR,
       payload: alerta,
@@ -112,14 +114,12 @@ export const iniciarSesionAction = (data) => async (dispatch) => {
 export const signupAction = (data) => async (dispatch) => {
   try {
     const respuesta = await clienteAxios.post("/api/auth/register", data);
-    console.log(respuesta.data);
     dispatch({
       type: REGISTRAR_USUARIO_EXITO,
       payload: respuesta.data,
     });
     getUserAuthencticate()(dispatch);
   } catch (error) {
-    console.log(error.response);
     let alerta = {
       message: error.response.data.msg,
       category: "Error",
@@ -144,12 +144,14 @@ export const logOutAction = () => (dispatch) => {
 
 export const editUser = (data) => async (dispatch) => {
   try {
-    console.log(data);
     const res = await clienteAxios.post(`/api/auth/edit`, data);
-    console.log(res.data);
+    dispatch({
+      type: EDIT_USER,
+      payload: res.data.user,
+    });
   } catch (error) {
-    console.log(error.response);
+    dispatch({
+      type: EDIT_USER_ERROR,
+    });
   }
 };
-
-export const newChat

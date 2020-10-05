@@ -12,11 +12,8 @@ const RoomMessage = ({
   const user = useSelector((store) => store.auth.user);
   const divRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (divRef.current !== null) {
-      //   console.log('useefecct', divRef.current)
-      //   console.log('scrollTop', divRef.current.scrollTop)
-      //   console.log('scrollHeight', divRef.current.scrollHeight)
       divRef.current.scrollTop = divRef.current.scrollHeight;
     }
   }, [allMessages, partner]);
@@ -35,7 +32,7 @@ const RoomMessage = ({
     <div className="room__message">
       <div ref={divRef} className="list__messages">
         {allMessages.map((message, index) => {
-          if (message.idchatList === listActive) {
+          if (message.receiver === partner || message.sender === partner) {
             return (
               <p
                 key={index}
@@ -45,6 +42,7 @@ const RoomMessage = ({
               </p>
             );
           }
+          return null;
         })}
       </div>
       <form

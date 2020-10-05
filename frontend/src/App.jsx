@@ -11,21 +11,21 @@ import Spinner from "./components/Spinner";
 import RutaPrivada from "./rutas/RutaPrivada";
 import { getUserAuthencticate } from "./Redux/authDuck";
 import { useDispatch, useSelector } from "react-redux";
-import { showInfo, showCamera, showClimate } from "./Redux/apiDuck";
-import Gallery from "./components/Gallery";
+import { showClimate } from "./Redux/apiDuck";
 import Planeta from "./components/Planeta";
+import InfoBorder from "./components/InfoBorder";
+import About from "./components/About";
+
 const token = localStorage.getItem("token");
 if (token) {
   tokenAuth(token);
 }
-
 const App = () => {
   const dispatch = useDispatch();
   const loading = useSelector((store) => store.auth.loading);
+  const apiClimate = useSelector((store) => store.api.apiClimate);
   useEffect(() => {
-    dispatch(showInfo());
     dispatch(showClimate());
-    // dispatch(showCamera());
     dispatch(getUserAuthencticate());
   }, [dispatch]);
 
@@ -38,10 +38,11 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Planeta />
-          <Gallery />
+          <InfoBorder />
         </Route>
         <Route path="/login" component={Login} exact />
         <Route path="/signup" component={Signup} exact />
+        <Route path="/about" component={About} exact />
         <RutaPrivada path="/messages" component={Messages} exact />
       </Switch>
     </Router>

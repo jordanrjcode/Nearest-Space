@@ -1,0 +1,21 @@
+.about-container {
+  margin-top: 5%;
+  color: white;
+}
+
+.about-container h1 {
+  padding: 16px 8px;
+  text-align: center;
+  font-size: 3rem;
+  color: var(--bg-color-primary);
+}
+
+.about-container h2 {
+  padding: 24px 2.5%;
+  color: var(--bg-color-secondary);
+}
+
+.about-container p {
+  padding: 0 2.5%;
+  line-height: 2rem;
+}

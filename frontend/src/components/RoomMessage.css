@@ -29,9 +29,12 @@
 .list__messages {
   flex-basis: 92%;
   color: white;
-  overflow: auto;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
+}
+.list__messages::-webkit-scrollbar {
+  display: none;
 }
 
 .list__messages p {
